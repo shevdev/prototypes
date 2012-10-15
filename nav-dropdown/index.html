@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Navigation Dropdown</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<style>
+	 a {	
+	 	cursor:pointer;
+		 text-decoration:underline;
+		 font-family:Arial, Helvetica, sans-serif;
+	 }
+	.navigation {
+		position: relative;
+		margin:0 auto;
+		width:800px;
+		background:#ccc;
+	}
+	.navigation li {
+		float:left;
+		list-style-type:none;
+		padding:0 20px 0 0;	
+	}
+	.navigation li .sub {
+		background: #eee;
+		position: absolute;
+		left: -987em;
+		width: 450px;
+	}
+	.navigation li.active .sub {
+		border: 1px solid #ddd;
+		top: 23px;
+		z-index: 100;
+	}
+	.navigation li#tab1.active .sub {
+    	left: 40px;
+	}
+	.navigation li#tab2.active .sub {
+		left: 163px;
+	}
+	.navigation li#tab3.active .sub {
+		left: 220px;
+	}
+	.navigation li#tab4.active .sub {
+		left: 200px;
+	}
+	.navigation li#tab5.active .sub {
+		left: 220px;
+	}
+	.navigation li#tab6.active .sub {
+		left: 230px;
+	}
+</style>
+</head>
+
+    <body>
+    
+   	<div id="site-nav">
+        <ul class="navigation">
+            <li class="main"><a href="#">Link 1</a></li>
+    
+            <li id="tab1" class="about">
+                <a title="Item 16" class="button">Link 2</a> 
+                <div class="sub">
+                    sub 2
+                </div>
+            </li>
+    
+            <li id="tab2" class="media">
+                <a title="Item 17" class="button">Link 3</a> 
+                <div class="sub">
+                     sub 3
+                </div>
+            </li>
+    
+            <li id="tab3" class="government">
+                <a title="Item 18" class="button">Link 4</a> 
+                <div class="sub">
+                     sub 4
+                </div>
+            </li>
+    
+            <li id="tab4" class="get-involved">
+                <a title="Item 19" class="button" href="javascript:alert('Coming Soon ');">Link 5</a>
+            </li>
+    
+            <li id="tab5" class="shop">
+                <a title="Item 20" class="button" href="#">Link 6</a> 
+                <div class="sub">
+                     sub 6
+                </div>
+            </li>
+        </ul>
+	</div> 
+    
+    </body>
+    
+    <script type="text/javascript" charset="utf-8">
+        $('.navigation li a.button').unbind('click').click(function(){
+            $('.navigation li').removeClass('active');
+            $(this).parent().addClass('active');
+        }); 
+        $('.navigation li .sub-footer').click(function(){
+            $(this).parents('li').removeClass('active');
+        });
+    </script>
+
+
+</html>
