@@ -2,35 +2,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Navigation Dropdown</title>
+<title>navigation dropdown</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <style>
 	 a {	
 	 	cursor:pointer;
-		 text-decoration:underline;
-		 font-family:Arial, Helvetica, sans-serif;
+		text-decoration:underline;
+		font-family:Arial, Helvetica, sans-serif;
+		color:#333;
 	 }
 	.navigation {
 		position: relative;
 		margin:0 auto;
-		width:800px;
-		background:#ccc;
+		width:600px;
 	}
 	.navigation li {
 		float:left;
 		list-style-type:none;
 		padding:0 20px 0 0;	
 	}
+	.navigation li {
+		text-decoration:uppercase;
+		font-weight:bold;	
+	}
 	.navigation li .sub {
 		background: #eee;
 		position: absolute;
-		left: -987em;
+		left: -9999px;
 		width: 450px;
 	}
+	/* subnav */
 	.navigation li.active .sub {
 		border: 1px solid #ddd;
 		top: 23px;
 		z-index: 100;
+	}
+	.navigation li.active .sub p {
+		margin: 5px 0;
 	}
 	.navigation li#tab1.active .sub {
     	left: 40px;
@@ -50,59 +58,75 @@
 	.navigation li#tab6.active .sub {
 		left: 230px;
 	}
+	.navigation li#tab6.active .sub p {
+		padding:0 0 100px 0;
+	}
+	.navigation li .sub .sub-footer {
+		bottom:10px;
+		padding:0 10px 0 0;
+		text-align:right;
+	}
 </style>
 </head>
 
     <body>
     
-   	<div id="site-nav">
         <ul class="navigation">
             <li class="main"><a href="#">Link 1</a></li>
     
             <li id="tab1" class="about">
-                <a title="Item 16" class="button">Link 2</a> 
+                <a title="Item 2" class="button">Link 2</a> 
                 <div class="sub">
-                    sub 2
+                    <p>sub 2</p>
+                    <div class="sub-footer"><a>Close X</a></div>
                 </div>
             </li>
     
             <li id="tab2" class="media">
-                <a title="Item 17" class="button">Link 3</a> 
+                <a title="Item 3" class="button">Link 3</a> 
                 <div class="sub">
-                     sub 3
+                     <p>sub 3</p>
+                     <div class="sub-footer"><a>Close X</a></div>
                 </div>
             </li>
     
             <li id="tab3" class="government">
-                <a title="Item 18" class="button">Link 4</a> 
+                <a title="Item 4" class="button">Link 4</a> 
                 <div class="sub">
-                     sub 4
+                     <p>sub 4</p>
+                     <div class="sub-footer"><a>Close X</a></div>
                 </div>
             </li>
     
             <li id="tab4" class="get-involved">
-                <a title="Item 19" class="button" href="javascript:alert('Coming Soon ');">Link 5</a>
+                <a href="javascript:alert('Coming Soon');">Link 5</a>
             </li>
     
             <li id="tab5" class="shop">
-                <a title="Item 20" class="button" href="#">Link 6</a> 
+                <a href="#" class="button">Link 6</a> 
                 <div class="sub">
-                     sub 6
+                     <p>sub 6</p>
+                     <div class="sub-footer"><a>Close X</a></div>
                 </div>
             </li>
         </ul>
-	</div> 
     
     </body>
     
     <script type="text/javascript" charset="utf-8">
-        $('.navigation li a.button').unbind('click').click(function(){
+        $('.navigation li a.button').bind('hover',function(){
             $('.navigation li').removeClass('active');
             $(this).parent().addClass('active');
         }); 
-        $('.navigation li .sub-footer').click(function(){
+		$('.navigation li .sub').bind('mouseleave',function() {
+			$(this).parents('li').removeClass('active');
+			// console.log('works');
+		});
+        $('.navigation li .sub-footer').bind('click',function(){
             $(this).parents('li').removeClass('active');
         });
+		
+		/* can change hover to click */
     </script>
 
 
